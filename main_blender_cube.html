@@ -3,9 +3,9 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Load the necessary files over the internet -->
-    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image.prod.js"></script>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image-aframe.prod.js"></script>
+    <script src="./mindar-image.prod-1.2.5.js"></script>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="./mindar-image-aframe.prod-1.2.5.js"></script>
   </head>
   <body>
     <!-- Main part of the application. Image Target .mind file -->
@@ -14,12 +14,13 @@
           increasing filterBeta reduces delay
     -->
 
-    <a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/examples/image-tracking/assets/card-example/card.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false filterMinCF:0.1; filterBeta: 10">
+    <a-scene mindar-image="imageTargetSrc: custom_target.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false filterMinCF:0.1; filterBeta: 10">
       <!-- 2D/3D Assets to display over the target image, if it is tracked -->
       <a-assets>
         <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/examples/image-tracking/assets/card-example/card.png" />
         <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
-        <!-- import own model in .gltf format-->
+
+        <!-- import own model in .gltf or .glb format-->
         <a-asset-item id="blenderCube" src="./assets/blender_cube.glb"></a-asset-item>
       </a-assets>
 
