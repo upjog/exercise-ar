@@ -1,0 +1,77 @@
+<!-- AR Application to track markers to visualize different furniture positions -->
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Load the necessary files over the internet -->
+    <script src="./mindar-image.prod-1.2.5.js"></script>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="./mindar-image-aframe.prod-1.2.5.js"></script>
+  </head>
+  <body>
+    <!-- Main part of the application. Image Target .mind file -->
+    <!-- Try to remove jitter with filterMinCF and filterBeta
+          decreasing filterMinCF reduces jittering
+          increasing filterBeta reduces delay
+    -->
+
+    <a-scene mindar-image="imageTargetSrc: targets.mind; maxTrack: 8" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false filterMinCF:0.001; filterBeta: 1000">
+      <!-- 2D/3D Assets to display over the target image, if it is tracked -->
+      <a-assets>
+        <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/examples/image-tracking/assets/card-example/card.png" />
+        <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
+
+        <!-- import own model from scans in .gltf or .glb format-->
+        <a-asset-item id="bookcase" src="./assets/ttiny_bookcase.glb"></a-asset-item>
+        <a-asset-item id="table" src="./assets/ttiny_table.glb"></a-asset-item>
+        <a-asset-item id="carpet" src="./assets/ttiny_carpet_tt.glb"></a-asset-item>
+        <a-asset-item id="chair" src="./assets/ttiny_chair.glb"></a-asset-item>
+        
+        <!-- import simple models-->
+        <a-asset-item id="blenderCube" src="./assets/blender_cube.glb"></a-asset-item>
+        <a-asset-item id="room_wire" src="./assets/room_5by6_wireframe.glb"></a-asset-item>
+        <a-asset-item id="simple_table" src="./assets/simle_table.glb"></a-asset-item>
+        <a-asset-item id="simple_table2" src="./assets/simple_table2.glb"></a-asset-item>
+        <a-asset-item id="simple_shelf" src="./assets/simple_shelf.glb"></a-asset-item>
+      </a-assets>
+
+      <!-- Set camera position to origin of target image -->
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <!-- Target images to be tracked and assets to be displayed with it-->
+      <!-- Rotation in degree. Position in ???-->
+      <!--<a-entity mindar-image-target="targetIndex: 0">
+        <a-gltf-model rotation="0 0 0" position="2 2 0.1" scale="0.1 0.1 0.1" src="#room_wire"></a-gltf-model>
+      </a-entity>-->
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-gltf-model rotation="0 0 0" position="1 1 0.0" scale="0.3 0.3 0.3" src="#room_wire"></a-gltf-model>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 1">
+        <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="1 1 1" src="#simple_table"></a-gltf-model>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 2">
+        <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.7 0.7 0.7" src="#simple_table2"></a-gltf-model>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 3">
+        <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.6 0.6 0.6" src="#simple_shelf"></a-gltf-model>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 4">
+        <a-gltf-model rotation="-90 0 0 " position="0 0 0.1" scale="0.5 0.5 0.5" src="#bookcase"></a-gltf-model>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 5">
+        <a-gltf-model rotation="-90 0 0 " position="0 0 0.1" scale="0.01 0.01 0.01" src="#table"></a-gltf-model>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 6">
+        <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.7 0.7 0.7" src="#chair"></a-gltf-model>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 7">
+        <a-gltf-model rotation="-90 0 0 " position="0 0 0.1" scale="0.5 0.5 0.5" src="#carpet"></a-gltf-model>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 8">
+        <a-gltf-model rotation="0 0 0 " position="0 0 0" scale="10 10 10" src="#chair"></a-gltf-model>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 9">
+        <a-gltf-model rotation="0 0 0 " position="0 0 0" scale="5 5 5" src="#chair"></a-gltf-model>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
